@@ -1,0 +1,13 @@
+镜像中所有配置均为utf8mb4  兼容utf8,忽略大小写敏感问题
+有两个子配置文件目录
+ /etc/mysql/conf.d
+ /etc/mysql/mysql.conf.d
+dockerfile中将一些配置均放到了/etc/mysql/mysql.conf.d下面。
+如果有自定义配置文件的，可以外挂一个数据卷到/etc/mysql/conf.d目录下实现自定义配置
+如:
+-v xxx/conf.d /etc/mysql/conf.d
+这里提供一些conf.d模板配置可参考进行
+
+
+wiki专用的数据库
+wiki jira只能使用mysql的数据库，而且排序还得是mysql_bin

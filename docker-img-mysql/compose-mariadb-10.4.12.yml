@@ -1,0 +1,22 @@
+version : '3.7'
+networks:
+  hy-net:
+    external: true
+services:
+  mariadb:
+        container_name : mariadb
+        hostname: mariadb
+        networks:
+          hy-net:
+        image: registry.cn-hangzhou.aliyuncs.com/trsrd/mariadb:10.4.12-utf8mb4-general_ci
+        volumes:
+           - /TRS/APP/mysql/mysql-data:/var/lib/mysql
+           - /TRS/APP/mysql/conf.d:/etc/mysql/conf.d
+           - /etc/localtime:/etc/localtime:ro
+        ports :
+                - 3306:3306
+        restart: always
+        environment:
+          TZ: Asia/Shanghai
+          MYSQL_ROOT_PASSWORD : "!QAZ2wsx1234"     #设置默认的root密码
+
